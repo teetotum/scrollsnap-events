@@ -1,4 +1,4 @@
-import { go } from "second.js";
+import { go } from "./second.js";
 
 const init = () => {
   const scroller = document.getElementById("scroller");

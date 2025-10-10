@@ -1,0 +1,195 @@
+:root {
+  --supported: #7fe01f;
+  --not-supported: #d84531;
+  --disabled: #dddddd;
+  --snap-toggle-algorithm: #d89831;
+  --snap-alignment-algorithm: #317ad8;
+  --old-algorithm: #31aaaa;
+  --subtle-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.supported {
+  --native-algorithm: var(--supported);
+}
+
+.not-supported {
+  --native-algorithm: var(--disabled);
+}
+
+.info {
+  background: white;
+  padding: 15px;
+  margin: 20px 0;
+  box-shadow: var(--subtle-box-shadow);
+}
+
+.support-status {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.support-status::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.supported .support-status::before {
+  background: var(--supported);
+}
+
+.not-supported .support-status::before {
+  background: var(--not-supported);
+}
+
+.not-supported .reported-item-native {
+  opacity: 0.5;
+}
+
+.testcase {
+  margin-top: 60px;
+}
+
+.native-indicator,
+.snap-toggle-indicator,
+.snap-alignment-indicator,
+.old-indicator {
+  padding: 4px;
+  border: 4px dashed transparent;
+}
+
+.reported-item-native .native-indicator {
+  border-color: var(--native-algorithm);
+}
+
+.reported-item-snap-toggle .snap-toggle-indicator {
+  border-color: var(--snap-toggle-algorithm);
+}
+
+.reported-item-snap-alignment .snap-alignment-indicator {
+  border-color: var(--snap-alignment-algorithm);
+}
+
+.reported-item-old-snap-toggle .old-indicator {
+  border-color: var(--old-algorithm);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+}
+
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.y-container {
+  height: 400px;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  border: 2px solid #333;
+  background: white;
+  margin: 20px 0;
+}
+
+.x-container {
+  width: 100%;
+  height: 200px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  border: 2px solid #333;
+  background: white;
+  margin: 20px 0;
+}
+
+.item {
+  flex: none;
+  min-width: 200px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #333;
+  border: 2px solid #555;
+}
+
+.x-y-container {
+  scroll-snap-type: both mandatory;
+  display: grid;
+  grid-template-columns: 10fr 25fr 20fr 35fr 10fr;
+  width: 100%;
+  height: 400px;
+  overflow: auto;
+  border: 2px solid #333;
+  background: white;
+  margin: 20px 0;
+}
+
+.negative-scroll-margin {
+  scroll-margin: -20px;
+}
+
+.absurd-padding {
+  scroll-padding: 220px;
+}
+
+.content-wrapper {
+  width: 1200px;
+  height: 900px;
+  display: grid;
+  grid-template-columns: repeat(6, 200px);
+  grid-template-rows: repeat(5, 180px);
+  gap: 20px;
+  padding: 20px;
+}
+
+.snap-point {
+  scroll-snap-align: start;
+}
+
+.scroll-margin {
+  scroll-margin: 17px 13px 21px 37px;
+}
+
+.scroll-padding {
+  scroll-padding: 17px 13px 21px 37px;
+}
+
+.reports {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 20px;
+  gap: 10px;
+  background: white;
+  box-shadow: var(--subtle-box-shadow);
+}
+
+.report {
+  display: block;
+}
+
+.report .snap-target {
+  font-size: 1rem;
+}
+
+.algorithm-name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 10px 0px;
+}
+
+.snap-target {
+  font-weight: bold;
+  margin: 10px 0px;
+}

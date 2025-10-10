@@ -1,0 +1,31 @@
+{
+  "name": "scrollsnap-events",
+  "version": "0.1.0",
+  "description": "Polyfill for the experimental scrollsnap events scrollsnapchange and scrollsnapchanging",
+  "author": {
+    "name": "Martin Winkler",
+    "url": "https://github.com/teetotum"
+  },
+  "keywords": [
+    "polyfill",
+    "scrollsnap",
+    "events",
+    "scrollsnapchange",
+    "scrollsnapchanging"
+  ],
+  "homepage": "https://github.com/teetotum/scrollsnap-events",
+  "bugs": "https://github.com/teetotum/scrollsnap-events/issues",
+  "repository": "https://github.com/teetotum/scrollsnap-events",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/all.js",
+    "./scrollsnapchange": "./src/scrollsnapchange.js",
+    "./scrollsnapchanging": "./src/scrollsnapchanging.js",
+    "./core": "./src/snapAlignment.js"
+  },
+  "types": "./src/types.d.ts",
+  "files": [
+    "src"
+  ]
+}

@@ -39,10 +39,17 @@ function setupEmulator(originalAddEventListener) {
 let initialized = false;
 
 const init = () => {
-  if (initialized) return;
+  console.log("init scrollsnapchanging")
+  if (initialized) {
+    console.log("was already initialized")
+    return;
+  }
 
   if (!("onscrollsnapchanging" in window)) {
+    console.log("need polyfill")
     polyfillEvent("scrollsnapchanging", setupEmulator);
+  } else {
+    console.log("does not need polyfill")
   }
 
   initialized = true;

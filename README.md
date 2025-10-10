@@ -46,19 +46,21 @@ import {
 ```
 
 - `getSnapTargetVertical` must be called with the scroll container element as the argument.
+  It returns the element that is deemed snapped, or `null` if no element is deemed snapped.
   ```js
   const scrollContainer = document.getElementById("vertical-scroller");
   const snapTarget = getSnapTargetVertical(scrollContainer);
   snapTarget?.classList.add("snapped");
   ```
-  It returns the element that is deemed snapped, or `null` if no element is deemed snapped.
+
 - `getSnapTargetHorizontal` must be called with the scroll container element as the argument.
+  It returns the element that is deemed snapped, or `null` if no element is deemed snapped.
   ```js
   const scrollContainer = document.getElementById("horizontal-scroller");
   const snapTarget = getSnapTargetHorizontal(scrollContainer);
   snapTarget?.classList.add("snapped");
   ```
-  It returns the element that is deemed snapped, or `null` if no element is deemed snapped.
+
 
 ## the snap detection mechanism and its limitations
 
@@ -67,6 +69,8 @@ The snap detection works by finding the element in a scroll snap container that 
 There can potentially be more than one element which are perfectly aligned with their respective snap alignment position. Therefore there is no guarantee that the polyfill will detect the actually snapped element under all circumstances; though the polyfill will yield an element that is plausibly a snapped element under the given circumstances.
 
 The snap detection was tested in a range of test scenarios made up of various scroll containers and items with a variety of different values for scroll snap relevant properties like `scroll-padding`, `scroll-margin`, `scroll-snap-align`, `scroll-snap-type` etc.
+
+You can try out the [test cases](https://teetotum.github.io/scrollsnap-events/testsuite.html) for yourself.
 
 In one test scenario with a scroll container that allows scrolling and snapping in both axes the detected element and the actually snapped element diverged when the container was at the maximum scroll position. The detected element was the first fully visible element in the scroll container viewport, the actually snapped element was the second fully visible element. It is unclear whether the native behavior is intended and currently no effort has been made to emulate this idiosyncrasy.
 

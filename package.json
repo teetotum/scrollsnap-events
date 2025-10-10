@@ -15,7 +15,10 @@
   ],
   "homepage": "https://github.com/teetotum/scrollsnap-events",
   "bugs": "https://github.com/teetotum/scrollsnap-events/issues",
-  "repository": "https://github.com/teetotum/scrollsnap-events",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teetotum/scrollsnap-events.git"
+  },
   "license": "MIT",
   "type": "module",
   "exports": {

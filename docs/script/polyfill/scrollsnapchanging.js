@@ -23,12 +23,14 @@ function setupEmulator(originalAddEventListener) {
     doCheckAndDispatchEvent(scrollEvent, "scrollsnapchanging", lastState);
   };
   const abortController = new AbortController();
+  console.log(this)
   originalAddEventListener.apply(this, [
     "scroll",
     onScroll,
     { signal: abortController.signal, passive: false },
   ]);
   const teardown = () => {
+    console.log('teardown of scroll listener')
     abortController.abort();
   };
   return teardown;

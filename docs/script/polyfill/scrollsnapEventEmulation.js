@@ -5,23 +5,23 @@ import {
 } from "./snapAlignment.js";
 
 export class LastState {
-  #lastSnappedBlock = new WeakRef(null);
-  #lastSnappedInline = new WeakRef(null);
+  #lastSnappedBlock = null;
+  #lastSnappedInline = null;
 
   get lastSnappedBlock() {
-    return this.#lastSnappedBlock.deref();
+    return this.#lastSnappedBlock?.deref() ?? null;
   }
 
   set lastSnappedBlock(value) {
-    return (this.#lastSnappedBlock = new WeakRef(value));
+     this.#lastSnappedBlock = value ? new WeakRef(value) : null;
   }
 
   get lastSnappedInline() {
-    return this.#lastSnappedInline.deref();
+    return this.#lastSnappedInline?.deref() ?? null;
   }
 
   set lastSnappedInline(value) {
-    return (this.#lastSnappedInline = new WeakRef(value));
+    this.#lastSnappedInline = value ? new WeakRef(value) : null;
   }
 }
 

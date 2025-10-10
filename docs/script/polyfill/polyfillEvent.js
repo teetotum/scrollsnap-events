@@ -1,12 +1,11 @@
-const event_emulator_map = new WeakMap();
-
 export const polyfillEvent = (eventType, setupEmulator) => {
-  patchEventSystem(eventType, setupEmulator, window);
-  patchEventSystem(eventType, setupEmulator, document);
-  patchEventSystem(eventType, setupEmulator, Element.prototype);
+  const event_emulator_map = new WeakMap();
+  patchEventSystem(eventType, setupEmulator, event_emulator_map, window);
+  patchEventSystem(eventType, setupEmulator, event_emulator_map, document);
+  patchEventSystem(eventType, setupEmulator, event_emulator_map, Element.prototype);
 };
 
-const patchEventSystem = (eventType, setupEmulator, patchTarget) => {
+const patchEventSystem = (eventType, setupEmulator, event_emulator_map, patchTarget) => {
   const originalAddEventListener = patchTarget.addEventListener;
   const originalRemoveEventListener = patchTarget.removeEventListener;
 

@@ -1,3 +1,2 @@
-import "./scrollsnapchanging.js";
 import "./scrollsnapchange.js";
-
+import "./scrollsnapchanging.js";

@@ -10,27 +10,19 @@ function setupEmulator(originalAddEventListener) {
   const lastState = new LastState();
   let lastExecution = 0;
   const onScroll = (scrollEvent) => {
-    // const now = Date.now();
-    // if (lastExecution + coolDownDuration > now) {
-    //   console.log("scroll: need to cool down");
-    //   return;
-    // }
+    const now = Date.now();
+    if (lastExecution + coolDownDuration > now) return;
 
-    // console.log("scroll: execute doCheckAndDispatchEvent");
-
-    // lastExecution = now;
-    console.log("scroll");
+    lastExecution = now;
     doCheckAndDispatchEvent(scrollEvent, "scrollsnapchanging", lastState);
   };
   const abortController = new AbortController();
-  console.log(this)
   originalAddEventListener.apply(this, [
     "scroll",
     onScroll,
-    { signal: abortController.signal, passive: false },
+    { signal: abortController.signal, passive: true },
   ]);
   const teardown = () => {
-    console.log('teardown of scroll listener')
     abortController.abort();
   };
   return teardown;
@@ -39,17 +31,10 @@ function setupEmulator(originalAddEventListener) {
 let initialized = false;
 
 const init = () => {
-  console.log("init scrollsnapchanging")
-  if (initialized) {
-    console.log("was already initialized")
-    return;
-  }
+  if (initialized) return;
 
   if (!("onscrollsnapchanging" in window)) {
-    console.log("need polyfill")
     polyfillEvent("scrollsnapchanging", setupEmulator);
-  } else {
-    console.log("does not need polyfill")
   }
 
   initialized = true;

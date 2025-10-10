@@ -11,7 +11,12 @@ function setupEmulator(originalAddEventListener) {
   let lastExecution = 0;
   const onScroll = (scrollEvent) => {
     const now = Date.now();
-    if (lastExecution + coolDownDuration > now) return;
+    if (lastExecution + coolDownDuration > now) {
+      console.log("scroll: need to cool down");
+      return;
+    }
+
+    console.log("scroll: execute doCheckAndDispatchEvent");
 
     lastExecution = now;
     doCheckAndDispatchEvent(scrollEvent, "scrollsnapchanging", lastState);

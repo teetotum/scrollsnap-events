@@ -81,13 +81,13 @@ const notContained = (
           : toNumber(descendantStyle.scrollMarginBottom)),
     };
 
-  if (snapBox.left < container.left && snapBox.right < container.right)
+  if (snapBox.left + epsilon < container.left && snapBox.right + epsilon < container.right)
     return true;
-  if (snapBox.right > container.right && snapBox.left > container.left)
+  if (snapBox.right - epsilon > container.right && snapBox.left - epsilon > container.left)
     return true;
-  if (snapBox.top < container.top && snapBox.bottom < container.bottom)
+  if (snapBox.top + epsilon < container.top && snapBox.bottom + epsilon < container.bottom)
     return true;
-  if (snapBox.bottom > container.bottom && snapBox.top > container.top)
+  if (snapBox.bottom - epsilon > container.bottom && snapBox.top - epsilon > container.top)
     return true;
 
   return false;

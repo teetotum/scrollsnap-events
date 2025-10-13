@@ -1,6 +1,6 @@
 {
   "name": "scrollsnap-events",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Polyfill for the experimental scrollsnap events scrollsnapchange and scrollsnapchanging",
   "author": {
     "name": "Martin Winkler",
